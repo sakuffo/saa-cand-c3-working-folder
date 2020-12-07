@@ -1,0 +1,340 @@
+{
+  "result": [
+    {
+      "expressions": [
+        {
+          "value": {
+            "controls": {
+              "CIS_1-16": {
+                "rules": [
+                  "iam_user_attached_policy"
+                ],
+                "valid": true
+              },
+              "CIS_1-22": {
+                "rules": [
+                  "iam_admin_policy"
+                ],
+                "valid": true
+              },
+              "CIS_2-2": {
+                "rules": [
+                  "cloudtrail_log_file_validation"
+                ],
+                "valid": true
+              },
+              "CIS_2-8": {
+                "rules": [
+                  "kms_rotate"
+                ],
+                "valid": true
+              },
+              "CIS_2-9": {
+                "rules": [
+                  "vpc_flow_log"
+                ],
+                "valid": true
+              },
+              "CIS_4-1": {
+                "rules": [
+                  "security_group_ingress_anywhere_ssh"
+                ],
+                "valid": true
+              },
+              "CIS_4-2": {
+                "rules": [
+                  "security_group_ingress_anywhere_rdp"
+                ],
+                "valid": true
+              },
+              "NIST-800-53_AC-17 (2)": {
+                "rules": [
+                  "cloudfront_distribution_https"
+                ],
+                "valid": true
+              },
+              "NIST-800-53_AC-17 (3)": {
+                "rules": [
+                  "security_group_ingress_anywhere_rdp",
+                  "security_group_ingress_anywhere_ssh"
+                ],
+                "valid": true
+              },
+              "NIST-800-53_AC-2 (7)(b)": {
+                "rules": [
+                  "iam_user_attached_policy"
+                ],
+                "valid": true
+              },
+              "NIST-800-53_AC-2g": {
+                "rules": [
+                  "cloudtrail_log_file_validation"
+                ],
+                "valid": true
+              },
+              "NIST-800-53_AC-4": {
+                "rules": [
+                  "security_group_ingress_anywhere_rdp",
+                  "security_group_ingress_anywhere_ssh",
+                  "vpc_flow_log"
+                ],
+                "valid": true
+              },
+              "NIST-800-53_AC-6 (9)": {
+                "rules": [
+                  "cloudtrail_log_file_validation"
+                ],
+                "valid": true
+              },
+              "NIST-800-53_SC-13": {
+                "rules": [
+                  "ebs_volume_encrypted",
+                  "s3_bucket_sse"
+                ],
+                "valid": true
+              },
+              "NIST-800-53_SC-7a": {
+                "rules": [
+                  "vpc_flow_log"
+                ],
+                "valid": true
+              },
+              "NIST-800-53_SC-8": {
+                "rules": [
+                  "cloudfront_distribution_https"
+                ],
+                "valid": true
+              },
+              "NIST-800-53_SI-4a.2": {
+                "rules": [
+                  "vpc_flow_log"
+                ],
+                "valid": true
+              }
+            },
+            "message": "11 rules and 17 controls passed!",
+            "rules": {
+              "cloudfront_distribution_https": {
+                "metadata": {
+                  "custom": {
+                    "controls": {
+                      "NIST": [
+                        "NIST-800-53_AC-17 (2)",
+                        "NIST-800-53_SC-8"
+                      ]
+                    },
+                    "severity": "Medium"
+                  },
+                  "description": "CloudFront viewer protocol policy should be set to https-only or redirect-to-https. CloudFront connections should be encrypted during transmission over networks that can be accessed by malicious individuals. A CloudFront distribution should only use HTTPS or Redirect HTTP to HTTPS for communication between viewers and CloudFront.",
+                  "id": "FG_R00011",
+                  "title": "CloudFront viewer protocol policy should be set to https-only or redirect-to-https"
+                },
+                "resources": {},
+                "valid": true
+              },
+              "cloudtrail_log_file_validation": {
+                "metadata": {
+                  "custom": {
+                    "controls": {
+                      "CIS": [
+                        "CIS_2-2"
+                      ],
+                      "NIST": [
+                        "NIST-800-53_AC-2g",
+                        "NIST-800-53_AC-6 (9)"
+                      ]
+                    },
+                    "severity": "Medium"
+                  },
+                  "description": "CloudTrail log file validation should be enabled. It is recommended that file validation be enabled on all CloudTrail logs because it provides additional integrity checking of the log data.",
+                  "id": "FG_R00027",
+                  "title": "CloudTrail log file validation should be enabled"
+                },
+                "resources": {},
+                "valid": true
+              },
+              "ebs_volume_encrypted": {
+                "metadata": {
+                  "custom": {
+                    "controls": {
+                      "NIST": [
+                        "NIST-800-53_SC-13"
+                      ]
+                    },
+                    "severity": "High"
+                  },
+                  "description": "EBS volume encryption should be enabled. Enabling encryption on EBS volumes protects data at rest inside the volume, data in transit between the volume and the instance, snapshots created from the volume, and volumes created from those snapshots. EBS volumes are encrypted using KMS keys.",
+                  "id": "FG_R00016",
+                  "title": "EBS volume encryption should be enabled"
+                },
+                "resources": {},
+                "valid": true
+              },
+              "iam_admin_policy": {
+                "metadata": {
+                  "custom": {
+                    "controls": {
+                      "CIS": [
+                        "CIS_1-22"
+                      ]
+                    },
+                    "severity": "High"
+                  },
+                  "description": "IAM policies should not have full \"*:*\" administrative privileges. IAM policies should start with a minimum set of permissions and include more as needed rather than starting with full administrative privileges. Providing full administrative privileges when unnecessary exposes resources to potentially unwanted actions.",
+                  "id": "FG_R00092",
+                  "title": "IAM policies should not have full \"*:*\" administrative privileges"
+                },
+                "resources": {
+                  "aws_iam_policy.saa_policy": {
+                    "id": "aws_iam_policy.saa_policy",
+                    "message": "",
+                    "type": "aws_iam_policy",
+                    "valid": true
+                  }
+                },
+                "valid": true
+              },
+              "iam_user_attached_policy": {
+                "metadata": {
+                  "custom": {
+                    "controls": {
+                      "CIS": [
+                        "CIS_1-16"
+                      ],
+                      "NIST": [
+                        "NIST-800-53_AC-2 (7)(b)"
+                      ]
+                    },
+                    "severity": "Low"
+                  },
+                  "description": "IAM policies should not be attached to users. Assigning privileges at the group or role level reduces the complexity of access management as the number of users grow. Reducing access management complexity may reduce opportunity for a principal to inadvertently receive or retain excessive privileges.",
+                  "id": "FG_R00007",
+                  "title": "IAM policies should not be attached directly to users"
+                },
+                "resources": {},
+                "valid": true
+              },
+              "kms_rotate": {
+                "metadata": {
+                  "custom": {
+                    "controls": {
+                      "CIS": [
+                        "CIS_2-8"
+                      ]
+                    },
+                    "severity": "Medium"
+                  },
+                  "description": "KMS CMK rotation should be enabled. It is recommended that users enable rotation for the customer created AWS Customer Master Key (CMK). Rotating encryption keys helps reduce the potential impact of a compromised key as users cannot use the old key to access the data.",
+                  "id": "FG_R00036",
+                  "title": "KMS CMK rotation should be enabled"
+                },
+                "resources": {},
+                "valid": true
+              },
+              "s3_bucket_sse": {
+                "metadata": {
+                  "custom": {
+                    "controls": {
+                      "NIST": [
+                        "NIST-800-53_SC-13"
+                      ]
+                    },
+                    "severity": "High"
+                  },
+                  "description": "S3 bucket server side encryption should be enabled. Enabling server-side encryption (SSE) on S3 buckets at the object level protects data at rest and helps prevent the breach of sensitive information assets. Objects can be encrypted with S3-Managed Keys (SSE-S3), KMS-Managed Keys (SSE-KMS), or Customer-Provided Keys (SSE-C).",
+                  "id": "FG_R00099",
+                  "title": "S3 bucket server side encryption should be enabled"
+                },
+                "resources": {},
+                "valid": true
+              },
+              "security_group_ingress_anywhere": {
+                "metadata": {
+                  "description": "VPC firewall rules should not permit unrestricted access from the internet, with the exception of port 80 (HTTP) and port 443 (HTTPS). Web applications or APIs generally need to be publicly accessible.",
+                  "id": "FG_R00351",
+                  "title": "VPC security group rules should not permit ingress from '0.0.0.0/0' except to ports 80 and 443"
+                },
+                "resources": {},
+                "valid": true
+              },
+              "security_group_ingress_anywhere_rdp": {
+                "metadata": {
+                  "custom": {
+                    "controls": {
+                      "CIS": [
+                        "CIS_4-2"
+                      ],
+                      "NIST": [
+                        "NIST-800-53_AC-4",
+                        "NIST-800-53_AC-17 (3)"
+                      ]
+                    }
+                  },
+                  "description": "VPC security group rules should not permit ingress from '0.0.0.0/0' to TCP/UDP port 3389 (Remote Desktop Protocol). VPC security groups should not permit unrestricted access from the internet to port 3389 (RDP). Removing unfettered connectivity to remote console services, such as Remote Desktop Protocol, reduces a server's exposure to risk.",
+                  "id": "FG_R00087",
+                  "title": "VPC security group rules should not permit ingress from '0.0.0.0/0' to port 3389 (Remote Desktop Protocol)"
+                },
+                "resources": {},
+                "valid": true
+              },
+              "security_group_ingress_anywhere_ssh": {
+                "metadata": {
+                  "custom": {
+                    "controls": {
+                      "CIS": [
+                        "CIS_4-1"
+                      ],
+                      "NIST": [
+                        "NIST-800-53_AC-4",
+                        "NIST-800-53_AC-17 (3)"
+                      ]
+                    }
+                  },
+                  "description": "VPC security group rules should not permit ingress from '0.0.0.0/0' to TCP/UDP port 22 (SSH). VPC security groups should not permit unrestricted access from the internet to port 22 (SSH). Removing unfettered connectivity to remote console services, such as SSH, reduces a server's exposure to risk.",
+                  "id": "FG_R00085",
+                  "title": "VPC security group rules should not permit ingress from '0.0.0.0/0' to port 22 (SSH)"
+                },
+                "resources": {},
+                "valid": true
+              },
+              "vpc_flow_log": {
+                "metadata": {
+                  "custom": {
+                    "controls": {
+                      "CIS": [
+                        "CIS_2-9"
+                      ],
+                      "NIST": [
+                        "NIST-800-53_AC-4",
+                        "NIST-800-53_SC-7a",
+                        "NIST-800-53_SI-4a.2"
+                      ]
+                    },
+                    "severity": "Medium"
+                  },
+                  "description": "VPC flow logging should be enabled. AWS VPC Flow Logs provide visibility into network traffic that traverses the AWS VPC. Users can use the flow logs to detect anomalous traffic or insight during security workflows.",
+                  "id": "FG_R00054",
+                  "title": "VPC flow logging should be enabled"
+                },
+                "resources": {},
+                "valid": true
+              }
+            },
+            "summary": {
+              "controls_failed": 0,
+              "controls_passed": 17,
+              "rules_failed": 0,
+              "rules_passed": 11,
+              "valid": true
+            }
+          },
+          "text": "data.fugue.regula.report",
+          "location": {
+            "row": 1,
+            "col": 1
+          }
+        }
+      ]
+    }
+  ]
+}
